@@ -16,7 +16,7 @@
            android:layout_width="240dp"
            android:layout_height="50dp"
            android:layout_weight="0.004"
-           android:numStars="3"
+           android:numStars="5"
            android:stepSize="1"/>
        <TextView
            android:id="@+id/textScore"

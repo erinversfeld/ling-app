@@ -20,8 +20,8 @@ public class ResultActivity extends Activity {
 		
 		int score = b.getInt("score");
 		scoreText.setText(score+" out of 20");
-		bar.setRating(score/3);
-		
+		bar.setRating((float)(score)/20*5);
+
 		if(score<10){
 			text.setText("Keep practicing!");
 		}
