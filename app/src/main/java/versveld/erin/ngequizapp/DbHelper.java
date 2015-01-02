@@ -94,7 +94,8 @@ public class DbHelper extends SQLiteOpenHelper {
 		}*/
 		
 		for(int i = 0; i<37; i++){
-			questionArray[i] = new VocabQuestion("What kind of animal is in this picture?", answerArray[i], answerArray[index.nextInt(20)], answerArray[index.nextInt(20)]);
+			questionArray[i] = new VocabQuestion("What kind of animal is in this picture?", answerArray[i],
+					answerArray[index.nextInt(answerArray.length)], answerArray[index.nextInt(answerArray.length)]);
 			this.addQuestion(questionArray[i]);
 		}
 	}
