@@ -33,7 +33,7 @@ public class QuizActivity extends Activity {
 		setContentView(R.layout.activity_quiz);
 		DbHelper db = new DbHelper(this);
 		questionList = db.getAllQuestions();
-		currentQuestion = questionList.get(questionInd);
+		currentQuestion = questionList.get((int)(Math.random()*questionList.size()));
 		textQuestion = (TextView)findViewById(R.id.textView1);
 		rCAns =(RadioButton)findViewById(R.id.radio0);
 		rWAns1 =(RadioButton)findViewById(R.id.radio1);
@@ -65,7 +65,7 @@ public class QuizActivity extends Activity {
 				Log.d("score", "Your score " + score);
 
 				if(questionInd <20){
-					currentQuestion = questionList.get(questionInd);
+					currentQuestion = questionList.get((int)(Math.random()*questionList.size()));
 					setQuestionView();
 				}
 				
