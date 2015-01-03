@@ -183,8 +183,11 @@ public class DbHelper extends SQLiteOpenHelper {
 		for(int i = 0; i<37; i++){
 			// The id of this question and the id of the question from getAllQuestions() won't necessarily
 			// match up - this id is arbitrary, while the one in getAllQuestions() is set by the db.
-			wrongInd1 = index.nextInt(answerArray.length);
-			wrongInd2 = index.nextInt(answerArray.length);
+			do{
+				wrongInd1 = index.nextInt(answerArray.length);
+				wrongInd2 = index.nextInt(answerArray.length);
+			} while(wrongInd1 == i || wrongInd2 == i);
+			Log.d("Answer assignment: ", "Wrong 1: "+(i==wrongInd1)+", Wrong 2: "+(i==wrongInd2));
 			questionArray[i] = new Question(i, "What kind of animal is in this picture?", answerArray[i],
 					answerArray[wrongInd1], answerArray[wrongInd2],
 					imageReferences[i], soundReferences[i], soundReferences[wrongInd1], soundReferences[wrongInd2]);
