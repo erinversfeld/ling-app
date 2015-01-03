@@ -48,7 +48,7 @@ public class QuizActivity extends Activity {
 			@Override
 			public void onClick(View v){
 				RadioButton selectedAnswer = (RadioButton)findViewById(radioGroup.getCheckedRadioButtonId());
-
+				//TODO: localise text
 				if(currentQuestion.getCorrectAnswer().equals(selectedAnswer.getText())){
 					score++;
 					Toast correct = Toast.makeText(getApplicationContext(), "Well done, that was correct!", Toast.LENGTH_SHORT);

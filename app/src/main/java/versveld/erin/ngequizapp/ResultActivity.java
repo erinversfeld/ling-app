@@ -17,7 +17,7 @@ public class ResultActivity extends Activity {
 		TextView text = (TextView)findViewById(R.id.textResult);
         TextView scoreText = (TextView)findViewById(R.id.textScore);
 		Bundle b = getIntent().getExtras();
-		
+		//TODO: localise text
 		int score = b.getInt("score");
 		scoreText.setText(score+" out of 20");
 		bar.setRating((float)(score)/20*5);
