@@ -26,7 +26,14 @@
            android:layout_height="wrap_content"
            android:layout_weight="0.01"
            android:src="@drawable/image0" />
-       
+
+       <TextView
+               android:id="@+id/textView2"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text = "@string/medium_text"
+               android:textAppearance="?android:attr/textAppearanceMedium"/>
+
        <RadioGroup
            android:id="@+id/radioGroup1"
            android:layout_width="match_parent"
@@ -37,26 +44,26 @@
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:checked="true"
-               android:text="@+string/radio_button_zero" />
+               android:text="@string/radio_button_zero" />
 
            <RadioButton
                android:id="@+id/radio1"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:text="@+string/radio_button_one" />
+               android:text="@string/radio_button_one" />
 
            <RadioButton
                android:id="@+id/radio2"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:text="@+string/radio_button_two" />
+               android:text="@string/radio_button_two" />
            </RadioGroup>
            
            <Button
                android:id="@+id/button1"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:text="@+string/button_next"/>
+               android:text="@string/button_next"/>
            
            </LinearLayout>
 

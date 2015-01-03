@@ -8,6 +8,7 @@ public class Question {
 	private String wrongAnswer1;
 	private String wrongAnswer2;
 	private Integer imageRef;
+	private String caption;
 	private Integer[] soundRefs;
 	private int id;
 	
@@ -17,13 +18,14 @@ public class Question {
 
 	//in future, must include the location of the name of the image
 	public Question(int id, String q, String a, String wrongAns1, String wrongAns2, Integer imgRef,
-					Integer sndRef0, Integer sndRef1, Integer sndRef2) {
+					String newCaption, Integer sndRef0, Integer sndRef1, Integer sndRef2) {
 		this.id = id;
 		questionText = q;
 		correctAnswer = a;
 		wrongAnswer1 = wrongAns1;
 		wrongAnswer2 = wrongAns2;
 		imageRef = imgRef;
+		caption = newCaption;
 		soundRefs = new Integer[]{sndRef0, sndRef1, sndRef2};
 	}
 	
@@ -49,6 +51,10 @@ public class Question {
 
 	public Integer getImageRef(){
 		return imageRef;
+	}
+
+	public String getCaption(){
+		return caption;
 	}
 
 	public Integer[] getSoundRefs(){
@@ -77,6 +83,10 @@ public class Question {
 
 	public void setImageRef(Integer newImageRef){
 		imageRef = newImageRef;
+	}
+
+	public void setCaption(String newCaption){
+		caption = newCaption;
 	}
 
 	public void setSoundRefs(Integer[] newSoundRefs){

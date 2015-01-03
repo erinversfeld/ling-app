@@ -23,6 +23,7 @@ public class DbHelper extends SQLiteOpenHelper {
 	private static final String KEY_WRONG_OPTION_1 = "wrongOp1";
 	private static final String KEY_WRONG_OPTION_2 = "wrongOp2";
 	private static final String KEY_IMG = "image";
+	private static final String KEY_CAPTION = "caption";
 	private static final String KEY_SND_ANS = "answerSound";
 	private static final String KEY_SND_WRONG_ANS_1 = "wrongSound1";
 	private static final String KEY_SND_WRONG_ANS_2 = "wrongSound2";
@@ -44,6 +45,7 @@ public class DbHelper extends SQLiteOpenHelper {
 				KEY_WRONG_OPTION_1+" TEXT,"+
 				KEY_WRONG_OPTION_2+" TEXT,"+
 				KEY_IMG +" INTEGER,"+
+				KEY_CAPTION +" STRING,"+
 				KEY_SND_ANS+" INTEGER,"+
 				KEY_SND_WRONG_ANS_1+" INTEGER,"+
 				KEY_SND_WRONG_ANS_2+" INTEGER"+
@@ -60,9 +62,10 @@ public class DbHelper extends SQLiteOpenHelper {
 
 	private void addQuestions(){
 		Question[] questionArray = new Question[37];
-		String[] answerArray = new String[37];
-		Integer[] imageReferences = new Integer[37];
-		Integer[] soundReferences = new Integer[37];
+		String[] answerArray = new String[questionArray.length];
+		String[] captions = new String[questionArray.length];
+		Integer[] imageReferences = new Integer[questionArray.length];
+		Integer[] soundReferences = new Integer[questionArray.length];
 		Random index = new Random();
 
 		answerArray[0] = "ǀqhuisi";
@@ -141,6 +144,44 @@ public class DbHelper extends SQLiteOpenHelper {
 		imageReferences[35] = R.drawable.image35;
 		imageReferences[36] = R.drawable.image36;
 
+		captions[0] = "bird";
+		captions[1] = "korhaan";
+		captions[2] = "kori bustard";
+		captions[3] = "secretary bird";
+		captions[4] = "vulture";
+		captions[5] = "owl";
+		captions[6] = "ostrich";
+		captions[7] = "zebra";
+		captions[8] = "blue wildebeast";
+		captions[9] = "gemsbok";
+		captions[10] = "eland";
+		captions[11] = "red hartebeest";
+		captions[12] = "steenbok";
+		captions[13] = "springbok";
+		captions[14] = "hare";
+		captions[15] = "mouse";
+		captions[16] = "tortoise";
+		captions[17] = "ground squirrel";
+		captions[18] = "yellow mongoose";
+		captions[19] = "suricate";
+		captions[20] = "lion";
+		captions[21] = "large spotted genet";
+		captions[22] = "black backed jackal";
+		captions[23] = "snake";
+		captions[24] = "scorpion";
+		captions[25] = "millipede";
+		captions[26] = "spider";
+		captions[27] = "butterfly";
+		captions[28] = "dung beetle";
+		captions[29] = "bull";
+		captions[30] = "cow";
+		captions[31] = "donkey";
+		captions[32] = "horse";
+		captions[33] = "goat";
+		captions[34] = "sheep";
+		captions[35] = "cat";
+		captions[36] = "dog";
+
 		soundReferences[0] = R.raw.sound1bird;
 		soundReferences[1] = R.raw.sound2korhaan;
 		soundReferences[2] = R.raw.sound3kori_bustard;
@@ -189,8 +230,8 @@ public class DbHelper extends SQLiteOpenHelper {
 			} while(wrongInd1 == i || wrongInd2 == i);
 			Log.d("Answer assignment: ", "Wrong 1: "+(i==wrongInd1)+", Wrong 2: "+(i==wrongInd2));
 			questionArray[i] = new Question(i, "What kind of animal is in this picture?", answerArray[i],
-					answerArray[wrongInd1], answerArray[wrongInd2],
-					imageReferences[i], soundReferences[i], soundReferences[wrongInd1], soundReferences[wrongInd2]);
+					answerArray[wrongInd1], answerArray[wrongInd2], imageReferences[i], captions[i],
+					soundReferences[i], soundReferences[wrongInd1], soundReferences[wrongInd2]);
 			this.addQuestion(questionArray[i]);
 		}
 	}
@@ -204,6 +245,7 @@ public class DbHelper extends SQLiteOpenHelper {
 		values.put(KEY_WRONG_OPTION_1, question.getWrongAnswer1());
 		values.put(KEY_WRONG_OPTION_2, question.getWrongAnswer2());
 		values.put(KEY_IMG, question.getImageRef());
+		values.put(KEY_CAPTION, question.getCaption());
 		Integer[] soundRefs = question.getSoundRefs();
 		values.put(KEY_SND_ANS, soundRefs[0]);
 		values.put(KEY_SND_WRONG_ANS_1, soundRefs[1]);
@@ -229,7 +271,8 @@ public class DbHelper extends SQLiteOpenHelper {
 				question.setWrongAnswer1(cursor.getString(3));
 				question.setWrongAnswer2(cursor.getString(4));
 				question.setImageRef(cursor.getInt(5));
-				soundRefs = new Integer[]{cursor.getInt(6), cursor.getInt(7), cursor.getInt(8)};
+				question.setCaption(cursor.getString(6));
+				soundRefs = new Integer[]{cursor.getInt(7), cursor.getInt(8), cursor.getInt(9)};
 				question.setSoundRefs(soundRefs);
 				questionList.add(question);
 			}while(cursor.moveToNext());

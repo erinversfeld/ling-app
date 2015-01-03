@@ -20,7 +20,7 @@ public class QuizActivity extends Activity {
 	int questionInd = 0;
 	
 	Question currentQuestion;
-	TextView textQuestion;
+	TextView textQuestion, textCaption;
 	RadioButton rCAns, rWAns1, rWAns2;
 	RadioGroup radioGroup;
 	Button buttonNext;
@@ -35,6 +35,7 @@ public class QuizActivity extends Activity {
 		questionList = db.getAllQuestions();
 		currentQuestion = questionList.get((int)(Math.random()*questionList.size()));
 		textQuestion = (TextView)findViewById(R.id.textView1);
+		textCaption = (TextView)findViewById(R.id.textView2);
 		radioGroup = (RadioGroup)findViewById(R.id.radioGroup1);
 		buttonNext = (Button)findViewById(R.id.button1);
 		image = (ImageView)findViewById(R.id.imageView1);
@@ -104,6 +105,7 @@ public class QuizActivity extends Activity {
 	
 	private void setQuestionView(){
 		textQuestion.setText(currentQuestion.getQuestionText());
+		textCaption.setText(currentQuestion.getCaption());
 
 		int correctButton = (int)(Math.random()*3);
 		switch (correctButton){

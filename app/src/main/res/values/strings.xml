@@ -2,6 +2,7 @@
 
     <string name="app_name">NgeQuiz</string>
     <string name="large_text">Large text</string>
+    <string name="medium_text">Medium text</string>
     <string name="radio_button_zero">Radio Button 0</string>
     <string name="radio_button_one">Radio Button 1</string>
     <string name="radio_button_two">Radio Button 2</string>
