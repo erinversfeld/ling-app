@@ -35,9 +35,6 @@ public class QuizActivity extends Activity {
 		questionList = db.getAllQuestions();
 		currentQuestion = questionList.get((int)(Math.random()*questionList.size()));
 		textQuestion = (TextView)findViewById(R.id.textView1);
-		rCAns =(RadioButton)findViewById(R.id.radio0);
-		rWAns1 =(RadioButton)findViewById(R.id.radio1);
-		rWAns2 =(RadioButton)findViewById(R.id.radio2);
 		radioGroup = (RadioGroup)findViewById(R.id.radioGroup1);
 		buttonNext = (Button)findViewById(R.id.button1);
 		image = (ImageView)findViewById(R.id.imageView1);
@@ -107,6 +104,26 @@ public class QuizActivity extends Activity {
 	
 	private void setQuestionView(){
 		textQuestion.setText(currentQuestion.getQuestionText());
+
+		int correctButton = (int)(Math.random()*3);
+		switch (correctButton){
+			case 0:
+				rCAns =(RadioButton)findViewById(R.id.radio0);
+				rWAns1 =(RadioButton)findViewById(R.id.radio1);
+				rWAns2 =(RadioButton)findViewById(R.id.radio2);
+				break;
+			case 1:
+				rCAns =(RadioButton)findViewById(R.id.radio1);
+				rWAns1 =(RadioButton)findViewById(R.id.radio0);
+				rWAns2 =(RadioButton)findViewById(R.id.radio2);
+				break;
+			case 2:
+				rCAns =(RadioButton)findViewById(R.id.radio2);
+				rWAns1 =(RadioButton)findViewById(R.id.radio1);
+				rWAns2 =(RadioButton)findViewById(R.id.radio0);
+				break;
+		}
+
 		rCAns.setText(currentQuestion.getCorrectAnswer());
 		rWAns1.setText(currentQuestion.getWrongAnswer1());
 		rWAns2.setText(currentQuestion.getWrongAnswer2());
