@@ -52,12 +52,18 @@ public class QuizActivity extends Activity {
 			public void onClick(View v){
 				RadioButton selectedAnswer = (RadioButton)findViewById(radioGroup.getCheckedRadioButtonId());
 
-				//TODO: add answer feedback (Toasters?)
 				if(currentQuestion.getCorrectAnswer().equals(selectedAnswer.getText())){
 					score++;
-					Log.d("score", "Your score " + score);
+					Toast correct = Toast.makeText(getApplicationContext(), "Well done, that was correct!", Toast.LENGTH_SHORT);
+					correct.show();
 				}
-				
+				else{
+					Toast incorrect = Toast.makeText(getApplicationContext(), "Sorry, that answer was incorrect.", Toast.LENGTH_SHORT);
+					incorrect.show();
+				}
+
+				Log.d("score", "Your score " + score);
+
 				if(questionInd <20){
 					currentQuestion = questionList.get(questionInd);
 					setQuestionView();
