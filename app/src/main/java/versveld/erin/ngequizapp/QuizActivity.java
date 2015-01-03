@@ -77,7 +77,6 @@ public class QuizActivity extends Activity {
 		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				//TODO: play sounds here
 				MediaPlayer mp = MediaPlayer.create(QuizActivity.this, R.raw.sound21lion);
 				Integer[] soundRefs = currentQuestion.getSoundRefs();
 				if(checkedId == rCAns.getId()){
